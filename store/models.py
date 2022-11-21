@@ -15,6 +15,7 @@ class Promotion(models.Model):
 
 class Product(models.Model):
     title = models.CharField(max_length=255)  # varchar(255)
+    slug = models.SlugField()
     description = models.TextField()
     unit_price = models.DecimalField(max_digits=6, decimal_places=2)
     inventory = models.IntegerField()
@@ -71,6 +72,7 @@ class Address(models.Model):
     city = models.CharField(max_length=255)
     customer = models.OneToOneField(Customer, on_delete=models.CASCADE,
                                     primary_key=True)
+    zip = models.CharField(max_length=255, null=True)
 
 
 class Cart(models.Model):
